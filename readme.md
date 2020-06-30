@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. `composer require razorcreations/ajax-field`
+`composer require razorcreations/ajax-field`
 
 ## Usage
 
@@ -31,3 +31,14 @@ If you wish you can override the default keys of "value" and "label" using the f
 ```php
 	AjaxField::make('Foo')->setUrl('/api/ajaxselect/foo')->setValueKey('id')->setLabelKey('name'),
 ```
+
+## Contributing
+
+If you would like to contribute please fork the project and submit a PR.
+
+### Coding Standards
+
+- `composer run fix` to fix any PHP linting issues automatically
+- `composer run lint` to show any PHP linting issues
+- `npm run fix` to fix any JS/Vue linting issue automatically
+- `npm run lint` to show any JS/Vue linting issues
