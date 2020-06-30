@@ -13,6 +13,7 @@
         :options="options"
         :reduce="reduceOption"
         :label="labelKey"
+        :multiple="field.multiple"
       />
     </template>
   </default-field>
@@ -36,6 +37,7 @@ export default {
 		return {
 			options: [],
 			loading: false,
+			labelKey: 'label',
 		};
 	},
 
@@ -57,7 +59,7 @@ export default {
 			}
 
 			this.value = value;
-			this.labelKey = this.field.labelKey || 'label';
+			this.labelKey = this.field.labelKey || this.labelKey;
 		},
 
 		/**

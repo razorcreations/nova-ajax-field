@@ -62,12 +62,22 @@ class AjaxField extends Field
 
 	/**
 	 * Sets the type of the value being save to a float.
-	 *
-	 * @return self
 	 */
-	public function typeFloat()
+	public function typeFloat(): self
 	{
 		return $this->setType('float');
+	}
+
+	/**
+	 * Enable multi-select.
+	 *
+	 * Note: values are saved comma seperated
+	 */
+	public function multiple(): self
+	{
+		return $this->withMeta([
+			'multiple' => true,
+		]);
 	}
 
 	private function setType(string $type): self

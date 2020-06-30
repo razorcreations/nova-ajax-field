@@ -820,6 +820,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -837,7 +838,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data: function data() {
 		return {
 			options: [],
-			loading: false
+			loading: false,
+			labelKey: 'label'
 		};
 	},
 	mounted: function mounted() {
@@ -859,7 +861,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 
 			this.value = value;
-			this.labelKey = this.field.labelKey || 'label';
+			this.labelKey = this.field.labelKey || this.labelKey;
 		},
 
 
@@ -28834,7 +28836,8 @@ var render = function() {
                 placeholder: _vm.field.name,
                 options: _vm.options,
                 reduce: _vm.reduceOption,
-                label: _vm.labelKey
+                label: _vm.labelKey,
+                multiple: _vm.field.multiple
               },
               model: {
                 value: _vm.value,
