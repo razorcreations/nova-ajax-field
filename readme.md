@@ -1,5 +1,7 @@
 # AJAX Field for Laravel Nova
 
+[![Latest Stable Version](https://poser.pugx.org/razorcreations/ajax-field/v)](//packagist.org/packages/razorcreations/ajax-field) [![Total Downloads](https://poser.pugx.org/razorcreations/ajax-field/downloads)](//packagist.org/packages/razorcreations/ajax-field) [![Latest Unstable Version](https://poser.pugx.org/razorcreations/ajax-field/v/unstable)](//packagist.org/packages/razorcreations/ajax-field) [![License](https://poser.pugx.org/razorcreations/ajax-field/license)](//packagist.org/packages/razorcreations/ajax-field)
+
 ## Installation
 
 `composer require razorcreations/ajax-field`
