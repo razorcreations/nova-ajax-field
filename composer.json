@@ -1,0 +1,46 @@
+{
+    "name": "razorcreations/ajax-field",
+    "description": "A searchable AJAX powered field for Laravel Nova.",
+    "authors": [
+        {
+            "name": "Ross Cooper",
+            "email": "ross@razorcreations.com",
+            "homepage": "http://www.razorcreations.com",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "nova",
+        "field",
+        "ajax"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Razorcreations\\AjaxField\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Razorcreations\\AjaxField\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16"
+	},
+	"scripts": {
+		"fix": "./vendor/bin/php-cs-fixer fix",
+		"lint": "./vendor/bin/php-cs-fixer fix --dry-run"
+	}
+}
