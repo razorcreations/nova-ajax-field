@@ -43,7 +43,7 @@ export default {
 	},
 
 	computed: {
-		 parentComponent() {
+		parentComponent() {
 			if(!this.field.parent_field) {
 				return false;
 			}
@@ -77,8 +77,8 @@ export default {
 
 	methods: {
 		/*
-         * Set the initial, internal value for the field.
-         */
+		 * Set the initial, internal value for the field.
+		 */
 		setInitialValue() {
 			let value = this.field.value ? this.field.value : null;
 			if (this.field.type === 'int') {
@@ -93,15 +93,15 @@ export default {
 		},
 
 		/**
-         * Fill the given FormData object with the field's internal value.
-         */
+		 * Fill the given FormData object with the field's internal value.
+		 */
 		fill(formData) {
 			formData.append(this.field.attribute, this.value || '')
 		},
 
 		/**
-         * Update the field's internal value.
-         */
+		 * Update the field's internal value.
+		 */
 		handleChange(value) {
 			this.value = value
 		},
