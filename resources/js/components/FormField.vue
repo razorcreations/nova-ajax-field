@@ -38,11 +38,41 @@ export default {
 			options: [],
 			loading: false,
 			labelKey: 'label',
+			parentVal: null
 		};
 	},
 
 	mounted () {
-		this.loadOptions();
+		if(this.parentComponent) {
+			this.parentComponent.$watch('value', (value) => {
+				this.parentVal = value;
+				this.loadOptions();
+			}, { immediate: true });
+		} else {
+			this.loadOptions();
+		}
+	},
+
+	computed: {
+		 parentComponent() {
+			if(!this.field.parent_field) {
+				return false;
+			}
+
+			let targetField = this.field.parent_field;
+			let currentField =  this.field.attribute;
+
+			// If component is inside a flexible, key is prefixed with an id
+			if( currentField.indexOf('__') ) {
+				targetField = currentField.substr(0, currentField.indexOf('__')) + '__' + targetField; 
+			}
+
+			//  Find the component the parent value references
+            return this.$parent.$children.find(component => {
+				return component.field !== undefined
+					&& component.field.attribute == targetField;
+            })
+        },
 	},
 
 	methods: {
@@ -77,7 +107,12 @@ export default {
 		},
 
 		loadOptions () {
-			window.Nova.request().get(this.field.url).then(({data}) => {
+			let url = this.field.url;
+			if(this.parentVal) {
+				url = url + '?' + this.field.parent_field + '=' + this.parentVal;
+			}
+
+			window.Nova.request().get(url).then(({data}) => {
 				this.options = data;
 				this.options.forEach(option => {
 					if (this.value === option.value) {
