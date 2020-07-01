@@ -42,17 +42,6 @@ export default {
 		};
 	},
 
-	mounted () {
-		if(this.parentComponent) {
-			this.parentComponent.$watch('value', (value) => {
-				this.parentVal = value;
-				this.loadOptions();
-			}, { immediate: true });
-		} else {
-			this.loadOptions();
-		}
-	},
-
 	computed: {
 		 parentComponent() {
 			if(!this.field.parent_field) {
@@ -68,11 +57,22 @@ export default {
 			}
 
 			//  Find the component the parent value references
-            return this.$parent.$children.find(component => {
+			return this.$parent.$children.find(component => {
 				return component.field !== undefined
 					&& component.field.attribute == targetField;
-            })
-        },
+			})
+		},
+	},
+
+	mounted () {
+		if(this.parentComponent) {
+			this.parentComponent.$watch('value', (value) => {
+				this.parentVal = value;
+				this.loadOptions();
+			}, { immediate: true });
+		} else {
+			this.loadOptions();
+		}
 	},
 
 	methods: {
