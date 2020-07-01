@@ -108,12 +108,15 @@ export default {
 
 		loadOptions () {
 			let params = {}
+			let url = this.field.url;
 
 			if(this.parentVal) {
 				params[this.field.parent_field] = this.parentVal;
+				const paramString = new URLSearchParams(params).toString();
+				url = url + '?' + paramString;
 			}
-
-			window.Nova.request().get(this.field.url, {params}).then(({data}) => {
+			
+			window.Nova.request().get( url ).then(({data}) => {
 				this.options = data;
 				this.options.forEach(option => {
 					if (this.value === option.value) {
