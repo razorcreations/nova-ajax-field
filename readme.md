@@ -36,6 +36,16 @@ If you wish you can override the default keys of "value" and "label" using the f
 	AjaxField::make('Foo')->setUrl('/api/ajaxselect/foo')->setValueKey('id')->setLabelKey('name'),
 ```
 
+You can pass through another Nova fields value by adding the parent method with the key of the nova field 
+```php
+	// Create a parent field 
+	Text::make('Foo', 'foo');
+	
+	// Create ajax field, with parent method 
+	AjaxField::make('Bar')->setUrl('/api/ajaxselect/foo')->parent('foo'),
+```
+This will hit the AjaxUrl with the fields key value pair appended as a get param e.g. /api/ajaxselect/foo?foo=value
+
 ## Contributing
 
 If you would like to contribute please fork the project and submit a PR.
