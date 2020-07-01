@@ -107,16 +107,17 @@ export default {
 		},
 
 		loadOptions () {
-			let url = this.field.url;
+			let params = {}
+
 			if(this.parentVal) {
-				url = url + '?' + this.field.parent_field + '=' + this.parentVal;
+				params[this.field.parent_field] = this.parentVal;
 			}
 
-			window.Nova.request().get(url).then(({data}) => {
+			window.Nova.request().get(this.field.url, {params}).then(({data}) => {
 				this.options = data;
 				this.options.forEach(option => {
 					if (this.value === option.value) {
-						this.value = option;
+						this.value = option.value;
 					}
 				})
 			});
