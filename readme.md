@@ -46,6 +46,12 @@ You can pass through another Nova fields value by adding the parent method with 
 ```
 This will hit the AjaxUrl with the fields key value pair appended as a get param e.g. /api/ajaxselect/foo?foo=value
 
+Rather than having the options loaded in once on page load, you can use ->responsive() to pass through the field value when the input value changes
+```php
+	AjaxField::make('Foo')->setUrl('/api/ajaxselect/foo')->responsive(),
+```
+
+
 ## Contributing
 
 If you would like to contribute please fork the project and submit a PR.

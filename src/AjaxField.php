@@ -83,11 +83,21 @@ class AjaxField extends Field
 	/*
 	* Adds a param to the ajax call so it can pass through a value from another field
 	*/
-	public function parent($attribute)
+	public function parent(string $attribute): self
 	{
-		$this->withMeta(['parent_field' => $attribute]);
+		return $this->withMeta([
+			'parent_field' => $attribute,
+		]);
+	}
 
-		return $this;
+	/*
+	* Ajax request to be on text input as opposed to single intitial request
+	*/
+	public function responsive(): self
+	{
+		return $this->withMeta([
+			'responsive' => true,
+		]);
 	}
 
 	private function setType(string $type): self
