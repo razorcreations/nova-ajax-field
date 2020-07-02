@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.3.0 - 2020-07-02
+
+- Add new responsive() method that will trigger ajax select on text change
+
 ## 0.2.3 - 2020-07-01
 
 - Dist files updated

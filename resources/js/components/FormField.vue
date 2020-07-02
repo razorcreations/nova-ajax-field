@@ -11,9 +11,10 @@
         :class="errorClasses"
         :placeholder="field.name"
         :options="options"
-        :reduce="reduceOption"
         :label="labelKey"
         :multiple="field.multiple"
+        :reduce="reduceOption"
+        @search="inputChange"
       />
     </template>
   </default-field>
@@ -38,7 +39,7 @@ export default {
 			options: [],
 			loading: false,
 			labelKey: 'label',
-			parentVal: null
+			parentVal: null,
 		};
 	},
 
@@ -68,28 +69,24 @@ export default {
 		if(this.parentComponent) {
 			this.parentComponent.$watch('value', (value) => {
 				this.parentVal = value;
-				this.loadOptions();
+				this.prepareField();
 			}, { immediate: true });
 		} else {
-			this.loadOptions();
+			this.prepareField();
 		}
 	},
 
 	methods: {
-		/*
-		 * Set the initial, internal value for the field.
-		 */
-		setInitialValue() {
-			let value = this.field.value ? this.field.value : null;
-			if (this.field.type === 'int') {
-				value = parseInt(value);
-			}
-			if (this.field.type === 'float') {
-				value = parseFloat(value);
+		prepareField() {
+			// If field is not responsive, load initial options
+			if(!this.field.responsive) {
+				return this.loadInitialOptions();
 			}
 
-			this.value = value;
-			this.labelKey = this.field.labelKey || this.labelKey;
+			// If field is responsive, do we have any initial values
+			if(this.field.value ) {
+				return this.loadInitialOptions(this.field.value);
+			}
 		},
 
 		/**
@@ -106,30 +103,75 @@ export default {
 			this.value = value
 		},
 
-		loadOptions () {
-			let params = {}
-			let url = this.field.url;
+		/*
+		* Load initial Options
+		*/ 
+		loadInitialOptions (value) {
+			let url = this.buildParamString(null, value);
 
-			if(this.parentVal) {
-				params[this.field.parent_field] = this.parentVal;
-				const paramString = new URLSearchParams(params).toString();
-				url = url + '?' + paramString;
-			}
-			
 			window.Nova.request().get( url ).then(({data}) => {
 				this.options = data;
+				// If initial value requred
+				if(value) {
+					return this.value = data;
+				}
+
 				this.options.forEach(option => {
-					if (this.value === option.value) {
+					if (this.value == option.value) {
 						this.value = option.value;
 					}
 				})
 			});
 		},
 
+		/*
+		* Dynamic search with the input value
+		*/ 
+		search: window._.debounce((loading, searchVal, vm) => {
+			let url = vm.buildParamString(searchVal)
+			window.Nova.request().get( url ).then(({data}) => {
+				vm.options = data;
+				loading(false);
+			});
+		}, 350),
+
+		
+		/*
+		* When multiselect input changes, determine if ready to query
+		*/
+		inputChange (input, loading) {
+			if( input.length < 3 &&  !/^\d+$/.test(input)) {
+				return;
+			}
+			loading(true);
+
+			this.search(loading, input, this);
+		},
+
 		reduceOption(option) {
 			const valueKey = this.field.valueKey || 'value';
-			
 			return option[valueKey];
+		},
+
+		buildParamString(searchVal, fieldVal) {
+			let params = {}
+			let url = this.field.url;
+
+			if(this.parentVal) {
+				params[this.field.parent_field] = this.parentVal;
+			}
+
+			if(this.field.responsive && searchVal) {
+				params.search = searchVal
+			}
+
+			if(fieldVal) {
+				params.value = fieldVal
+			}
+
+			const paramString = new URLSearchParams(params).toString();
+
+			return url = url + '?' + paramString;
 		}
 	},
 }
@@ -138,6 +180,7 @@ export default {
 <style lang="css">
 	.v-select {
 		padding: 0;
+		height: auto;
 	}
 	.vs__dropdown-toggle {
 		border-color: transparent !important;
