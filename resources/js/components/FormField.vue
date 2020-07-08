@@ -10,11 +10,12 @@
         class="w-full form-control form-input form-input-bordered"
         :class="errorClasses"
         :placeholder="field.name"
-        :options="options"
+        :options="availableOptions"
         :label="labelKey"
         :multiple="field.multiple"
         :reduce="reduceOption"
         @search="inputChange"
+		@input="inputSelected"
       />
     </template>
   </default-field>
@@ -24,6 +25,7 @@
 import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import VueSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
+import _ from 'lodash';
 
 export default {
 	
@@ -40,6 +42,7 @@ export default {
 			loading: false,
 			labelKey: 'label',
 			parentVal: null,
+			selectedOptions: [],
 		};
 	},
 
@@ -63,9 +66,14 @@ export default {
 					&& component.field.attribute == targetField;
 			})
 		},
+
+		availableOptions () {
+			return _.uniq(this.options.concat(this.selectedOptions), 'value');
+		},
 	},
 
 	mounted () {
+		this.parseInitialValue();
 		if(this.parentComponent) {
 			this.parentComponent.$watch('value', (value) => {
 				this.parentVal = value;
@@ -172,6 +180,53 @@ export default {
 			const paramString = new URLSearchParams(params).toString();
 
 			return url = url + '?' + paramString;
+		},
+
+		parseInitialValue () {
+			let value = this.field.value ? this.field.value : null;
+			if (!value) {
+				this.value = value;
+				return;
+			}
+			if (!this.field.multiple) {
+				value = this._parseValue(value);
+			} else {
+				if (!Array.isArray(value)) {
+					value = value.split(',');
+				}
+				value = value.map(this._parseValue);
+			}
+			this.value = value;
+		},
+
+		_parseValue(value) {
+			if (this.field.type === 'int') {
+				value = parseInt(value);
+			}
+			if (this.field.type === 'float') {
+				value = parseFloat(value);
+			}
+
+			return value;
+		},
+
+		inputSelected(value) {
+			this.selectedOptions = [];
+			if (!value) {
+				return;
+			}
+			if (Array.isArray(value)) {
+				value.forEach(v => {
+					if (!v) {
+						return;
+					}
+					const selectedOption = this.options.find(option => option.value === v);
+					this.selectedOptions.push(selectedOption);
+				});
+			} else {
+				const selectedOption = this.options.find(option => option.value === value);
+				this.selectedOptions.push(selectedOption);
+			}
 		}
 	},
 }
