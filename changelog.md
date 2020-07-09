@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.3.1 - 2020-07-09
+
+- Fixed responsive multiselect fields losing their values on search
+
 ## 0.3.0 - 2020-07-02
 
 - Add new responsive() method that will trigger ajax select on text change
