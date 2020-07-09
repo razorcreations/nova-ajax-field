@@ -972,7 +972,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		reduceOption: function reduceOption(option) {
 			var valueKey = this.field.valueKey || 'value';
-			return option[valueKey];
+			return option ? option[valueKey] : null;
 		},
 		buildParamString: function buildParamString(searchVal, fieldVal) {
 			var params = {};
@@ -1023,12 +1023,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		inputSelected: function inputSelected(value) {
 			var _this3 = this;
 
-			this.selectedOptions = [];
 			if (!value) {
 				return;
 			}
 			if (Array.isArray(value)) {
 				value.forEach(function (v) {
+					console.log(v);
 					if (!v) {
 						return;
 					}

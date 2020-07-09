@@ -15,7 +15,7 @@
         :multiple="field.multiple"
         :reduce="reduceOption"
         @search="inputChange"
-		@input="inputSelected"
+        @input="inputSelected"
       />
     </template>
   </default-field>
@@ -158,7 +158,7 @@ export default {
 
 		reduceOption(option) {
 			const valueKey = this.field.valueKey || 'value';
-			return option[valueKey];
+			return option ? option[valueKey] : null;
 		},
 
 		buildParamString(searchVal, fieldVal) {
@@ -211,7 +211,6 @@ export default {
 		},
 
 		inputSelected(value) {
-			this.selectedOptions = [];
 			if (!value) {
 				return;
 			}
