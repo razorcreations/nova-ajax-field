@@ -3,7 +3,7 @@ name: CI Checks
 on: [push]
 
 jobs:
-  php-lint:
+  php-ci:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,7 +13,7 @@ jobs:
     - name: Run linter
       run: composer run lint
 
-  npm-lint:
+  npm-ci:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -23,3 +23,5 @@ jobs:
       run: npm install
     - name: Run linter
       run: npm run lint
+    - name: Build assets
+      run: npm run prod
