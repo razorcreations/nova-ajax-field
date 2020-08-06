@@ -43,6 +43,7 @@ export default {
 			labelKey: 'label',
 			parentVal: null,
 			selectedOptions: [],
+			value: null,
 		};
 	},
 
@@ -126,10 +127,6 @@ export default {
 
 			window.Nova.request().get( url ).then(({data}) => {
 				this.options = data;
-				// If initial value requred
-				if(value) {
-					return this.value = data;
-				}
 
 				this.options.forEach(option => {
 					if (this.value == option.value) {
