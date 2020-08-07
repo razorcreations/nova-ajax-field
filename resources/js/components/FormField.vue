@@ -129,9 +129,9 @@ export default {
 				this.options = data;
 
 				this.options.forEach(option => {
-					if (this.value == option.value) {
-						this.value = option.value;
-					}
+                    if (this.value == option.value) {
+                        this.selectedOptions.push(option);
+                    }
 				})
 			});
 		},
