@@ -130,7 +130,7 @@ export default {
 
 				this.options.forEach(option => {
 					if (this.value == option.value) {
-						this.value = option.value;
+				        this.selectedOptions.push(option);
 					}
 				})
 			});
