@@ -118,9 +118,7 @@ export default {
 		loadInitialOptions (value) {
 			let url = this.buildParamString(null, value);
 
-			console.log(value);
 			if(Array.isArray(value) && value.length === 1 && !value[0]) {
-				console.log('length 1, is array');
 				this.value = [];
 				return;
 			}
