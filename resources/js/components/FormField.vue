@@ -26,6 +26,7 @@ import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import VueSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
 import _ from 'lodash';
+import { isArray } from 'util';
 
 export default {
 	
@@ -127,6 +128,14 @@ export default {
 				this.options = data;
 
 				this.options.forEach(option => {
+					if (isArray(this.value)) {
+						this.value.forEach(v => {
+							if (v == option.value) {
+								this.selectedOptions.push(option);
+							}
+						})
+						return;
+					}
 					if (this.value == option.value) {
 						this.selectedOptions.push(option);
 					}

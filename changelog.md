@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 0.3.5 - 2020-08-18
+
+- Fixed bug where if the inital value was an array the options array would not be populated correctly
+
 ## 0.3.4 - 2020-08-18
 
 - Rebuilt assets
