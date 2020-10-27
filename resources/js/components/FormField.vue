@@ -205,7 +205,7 @@ export default {
 				if (!Array.isArray(value)) {
 					value = value.split(',');
 				}
-				value = value.map(this._parseValue);
+				!value[0] ? value = [] : value = value.map(this._parseValue);
 			}
 			this.value = value;
 		},
