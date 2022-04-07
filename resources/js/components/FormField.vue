@@ -26,6 +26,7 @@ import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import VueSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
 import _ from 'lodash';
+import { isArray } from 'util';
 
 export default {
 	
@@ -43,6 +44,7 @@ export default {
 			labelKey: 'label',
 			parentVal: null,
 			selectedOptions: [],
+			value: null,
 		};
 	},
 
@@ -124,14 +126,18 @@ export default {
 
 			window.Nova.request().get( url ).then(({data}) => {
 				this.options = data;
-				// If initial value requred
-				if(value) {
-					return this.value = data;
-				}
 
 				this.options.forEach(option => {
+					if (isArray(this.value)) {
+						this.value.forEach(v => {
+							if (v == option.value) {
+								this.selectedOptions.push(option);
+							}
+						})
+						return;
+					}
 					if (this.value == option.value) {
-						this.value = option.value;
+						this.selectedOptions.push(option);
 					}
 				})
 			});
@@ -199,7 +205,7 @@ export default {
 				if (!Array.isArray(value)) {
 					value = value.split(',');
 				}
-				value = value.map(this._parseValue);
+				!value[0] ? value = [] : value = value.map(this._parseValue);
 			}
 			this.value = value;
 		},
