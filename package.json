@@ -17,11 +17,13 @@
     "laravel-mix": "^6.0.41",
     "lodash": "^4.17.21",
     "postcss": "^8.3.11",
-    "vue-loader": "^16.8.3"
+    "vue-loader": "^16.8.3",
+    "laravel-nova": "^1.0"
   },
   "dependencies": {
     "eslint": "^8.12.0",
     "eslint-plugin-vue": "^8.6.0",
-    "vue-select": "^4.0.0-beta.3"
+    "vue-select": "^4.0.0-beta.3",
+    "vue": "^3.0"
   }
 }

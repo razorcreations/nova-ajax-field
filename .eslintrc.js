@@ -3,7 +3,10 @@ module.exports = {
     'eslint:recommended',
     'plugin:vue/vue3-recommended'
   ],
-  "ignorePatterns": ["resources/js/field.js"],
+  "globals": {
+    "Nova": true,
+    "store": true,
+  },
   rules: {
 	// override/add rules settings here...
 	"indent": ["error", "tab"]
@@ -11,4 +14,5 @@ module.exports = {
   env: {
       node: true,
   }
+  
 }
