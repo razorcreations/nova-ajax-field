@@ -118,7 +118,6 @@ export default {
 			let url = this.buildParamString(null, value);
 
 			if(Array.isArray(value) && value.length === 1 && !value[0]) {
-				console.log('length 1, is array');
 				this.value = [];
 				return;
 			}
@@ -190,7 +189,6 @@ export default {
 
 		parseInitialValue () {
 			let value = this.field.value ? this.field.value : null;
-			console.log(value);
 			if (!value) {
 				this.value = value;
 				return;
