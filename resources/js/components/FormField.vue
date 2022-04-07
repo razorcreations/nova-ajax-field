@@ -4,7 +4,7 @@
     :errors="errors"
   >
     <template #field>
-        <vue-select
+      <vue-select
         :id="field.name"
         v-model="value"
         class="w-full form-control form-input form-input-bordered"
@@ -190,7 +190,7 @@ export default {
 
 		parseInitialValue () {
 			let value = this.field.value ? this.field.value : null;
-      console.log(value);
+			console.log(value);
 			if (!value) {
 				this.value = value;
 				return;
