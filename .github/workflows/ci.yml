@@ -19,7 +19,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Use Node.js
       uses: actions/setup-node@v1
-        with: node-version: '14'
     - name: Install depenedencies
       run: npm install
     - name: Run linter
