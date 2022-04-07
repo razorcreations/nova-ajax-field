@@ -8,6 +8,10 @@
 
 `composer require razorcreations/ajax-field`
 
+For Nova 3 support use 
+
+`composer require razorcreations/ajax-field@0.3.2`
+
 ## Usage
 
 ```php

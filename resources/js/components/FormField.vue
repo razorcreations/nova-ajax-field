@@ -4,7 +4,7 @@
     :errors="errors"
   >
     <template #field>
-      <vue-select
+        <vue-select
         :id="field.name"
         v-model="value"
         class="w-full form-control form-input form-input-bordered"
@@ -117,7 +117,6 @@ export default {
 		loadInitialOptions (value) {
 			let url = this.buildParamString(null, value);
 
-			console.log(value);
 			if(Array.isArray(value) && value.length === 1 && !value[0]) {
 				console.log('length 1, is array');
 				this.value = [];
@@ -191,6 +190,7 @@ export default {
 
 		parseInitialValue () {
 			let value = this.field.value ? this.field.value : null;
+      console.log(value);
 			if (!value) {
 				this.value = value;
 				return;
