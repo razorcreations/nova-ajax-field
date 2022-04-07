@@ -8,7 +8,7 @@ mix.setPublicPath('dist')
             vue: 'Vue',
         },
         output: {
-            uniqueName: 'spatie/nova-tags-field',
+            uniqueName: 'spatie/nova-ajax-field',
         },
         resolve: {
             symlinks: false
