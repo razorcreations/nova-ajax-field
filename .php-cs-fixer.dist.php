@@ -1,8 +1,7 @@
 <?php
+$config = new PhpCsFixer\Config();
 
-return PhpCsFixer\Config::create()
-	->setIndent("\t")
-	->setRiskyAllowed(true)
+return $config
 	->setRules([
 		'@Symfony' => true,
 		'@PHP71Migration' => true,
@@ -21,6 +20,7 @@ return PhpCsFixer\Config::create()
          ])
     ->setIndent("\t")
     ->setLineEnding("\n")
+	->setRiskyAllowed(true)
 	->setFinder(
 		PhpCsFixer\Finder::create()
 			->in([

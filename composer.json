@@ -44,7 +44,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16"
+        "friendsofphp/php-cs-fixer": "^3.8"
 	},
     "scripts": {
 		"fix": "./vendor/bin/php-cs-fixer fix",
