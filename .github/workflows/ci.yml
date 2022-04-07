@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
     - name: Install depenedencies
       run: npm install
     - name: Run linter
