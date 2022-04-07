@@ -12,18 +12,22 @@
     "lint": "eslint --ext .js,.vue resources"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.2.22",
-    "form-backend-validation": "^2.3.3",
-    "laravel-mix": "^6.0.41",
-    "lodash": "^4.17.21",
-    "postcss": "^8.3.11",
-    "vue-loader": "^16.8.3",
-    "laravel-nova": "^1.0"
+    "@vue/babel-plugin-jsx": "^1.1.1",
+    "cross-env": "^5.0.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-vue": "^4.4.0",
+    "laravel-mix": "^6.0",
+    "laravel-nova": "^1.0",
+    "prettier": "^1.14.2",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.1.0",
+    "vue-loader": "^16.2.0"
   },
   "dependencies": {
-    "eslint": "^8.12.0",
-    "eslint-plugin-vue": "^8.6.0",
+    "@inertiajs/inertia": "^0.11.0",
+    "vue": "^3.0",
     "vue-select": "^4.0.0-beta.3",
-    "vue": "^3.0"
+    "vuex": "^4.0.2"
   }
 }
