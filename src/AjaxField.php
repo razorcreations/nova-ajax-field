@@ -97,9 +97,24 @@ class AjaxField extends Field
 	{
 		return $this->withMeta([
 			'responsive' => true,
+			'filterable' => false //@see https://vue-select.org/guide/ajax.html#disabling-filtering
 		]);
 	}
 
+	/**
+	 * When loading server side options, it can be useful to disable the client side filtering. Use the filterable prop to disable filtering.
+	 * @see https://vue-select.org/guide/ajax.html#disabling-filtering
+	 */
+	public function filterable(bool $filterable = true): self
+	{
+		return $this->withMeta([
+			'filterable' => $filterable,
+		]);
+	}
+
+	/**
+	 *
+	 */
 	private function setType(string $type): self
 	{
 		return $this->withMeta([
