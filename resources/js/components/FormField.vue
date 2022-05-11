@@ -14,6 +14,7 @@
         :label="labelKey"
         :multiple="field.multiple"
         :reduce="reduceOption"
+        :filterable="filterable"
         @search="inputChange"
         @input="inputSelected"
       />
@@ -45,6 +46,7 @@ export default {
 			parentVal: null,
 			selectedOptions: [],
 			value: null,
+			filterable: true,
 		};
 	},
 
@@ -88,6 +90,11 @@ export default {
 
 	methods: {
 		prepareField() {
+			//Check whether any filterable data was set, otherwise stay true
+			if(this.field.filterable !== 'undefined') {
+				this.filterable = this.field.filterable;
+			}
+
 			// If field is not responsive, load initial options
 			if(!this.field.responsive) {
 				return this.loadInitialOptions();
