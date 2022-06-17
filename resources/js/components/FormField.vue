@@ -145,6 +145,7 @@ export default {
 					}
 					if (this.value == option.value) {
 						this.selectedOptions.push(option);
+						this.value = option;
 					}
 				})
 			});
