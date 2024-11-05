@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## 1.1.0 - 2024-11-05
+## 1.2.0 - 2024-11-05
 
 - Fixed javascript error when inside a flexible componet
 - Any Ajax Request results are now stored in a cached variable so label isn't lost on search 
