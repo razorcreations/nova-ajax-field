@@ -153,8 +153,8 @@ export default {
 					}
 				})
 			}).catch(error => {
-            	console.error('Error loading initial options:', error);
-        	});
+				console.error('Error loading initial options:', error);
+			});
 		},
 
 		/*
