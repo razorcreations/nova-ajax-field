@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.2.1 - 2024-11-05
+
+- Remove Nova secrets from being required in the CI runner action during Composer setup
+
 ## 1.2.0 - 2024-11-05
 
 - Fixed javascript error when inside a flexible componet

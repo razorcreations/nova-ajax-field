@@ -8,8 +8,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name : Setup Config
-      run:  composer config "http-basic.nova.laravel.com" "${{ secrets.NOVA_USERNAME }}" "${{ secrets.NOVA_PASSWORD }}"
     - name: Install depenedencies
       uses: php-actions/composer@v1
     - name: Run linter
