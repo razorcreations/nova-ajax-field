@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.2.0 - 2024-11-05
+
+- Fixed javascript error when inside a flexible componet
+- Any Ajax Request results are now stored in a cached variable so label isn't lost on search 
+- Use Nova Placeholder before name on search input
+
 ## 1.0.1 - 2022-05-11
 
 - Added filterable option flag, contributed by https://github.com/nea

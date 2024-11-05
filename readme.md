@@ -15,6 +15,9 @@ For Nova 3 support use
 ## Usage
 
 ```php
+
+	use Razorcreations\AjaxField\AjaxField;
+
 	// Inside your resources fields definition
 	AjaxField::make('Foo')->setUrl('/api/ajaxselect/foo'),
 
