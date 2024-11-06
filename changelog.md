@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.2.2 - 2024-11-06
+
+- Fix to vue-select 3.x returning an instance of the event on change, rather than the updated value
+- `root` declaration on eslint config to fix deprecation warnings
+
 ## 1.2.1 - 2024-11-05
 
 - Remove Nova secrets from being required in the CI runner action during Composer setup

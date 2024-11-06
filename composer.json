@@ -1,53 +1,58 @@
 {
-    "name": "razorcreations/ajax-field",
-    "description": "A searchable AJAX powered field for Laravel Nova.",
-    "version": "1.2.0",
-    "authors": [
-        {
-            "name": "Ross Cooper",
-            "email": "ross@razorcreations.com",
-            "homepage": "http://www.razorcreations.com",
-            "role": "Developer"
-        },
-
-        {
-            "name": "Tom Stowe",
-            "email": "tom@razorcreations.com",
-            "homepage": "http://www.razorcreations.com",
-            "role": "Developer"
-        }
-    ],
-    "keywords": [
-        "laravel",
-        "nova",
-        "field",
-        "ajax"
-    ],
-    "license": "MIT",
-    "require": {
-        "php": "^7.3|^8.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Razorcreations\\AjaxField\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Razorcreations\\AjaxField\\FieldServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.8"
+	"name": "razorcreations/ajax-field",
+	"description": "A searchable AJAX powered field for Laravel Nova 3 and 4.",
+	"version": "1.2.2",
+	"authors": [
+		{
+			"name": "Ross Cooper",
+			"email": "ross@razorcreations.com",
+			"homepage": "http://www.razorcreations.com",
+			"role": "Developer"
+		},
+		{
+			"name": "Tom Stowe",
+			"email": "tom@razorcreations.com",
+			"homepage": "http://www.razorcreations.com",
+			"role": "Developer"
+		},
+		{
+			"name": "Gary Garside",
+			"email": "gary@razorcreations.com",
+			"homepage": "http://www.razorcreations.com",
+			"role": "Developer"
+		}
+	],
+	"keywords": [
+		"laravel",
+		"nova",
+		"field",
+		"ajax"
+	],
+	"license": "MIT",
+	"require": {
+		"php": "^7.3|^8.0"
 	},
-    "scripts": {
+	"autoload": {
+		"psr-4": {
+			"Razorcreations\\AjaxField\\": "src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Razorcreations\\AjaxField\\FieldServiceProvider"
+			]
+		}
+	},
+	"config": {
+		"sort-packages": true
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^3.8"
+	},
+	"scripts": {
 		"fix": "./vendor/bin/php-cs-fixer fix",
 		"lint": "./vendor/bin/php-cs-fixer fix --dry-run"
 	}
