@@ -255,7 +255,7 @@ export default {
 			return value;
 		},
 
-		inputSelected () {
+		inputSelected() {
 			const value = this.value;
 
 			if (!value) {
