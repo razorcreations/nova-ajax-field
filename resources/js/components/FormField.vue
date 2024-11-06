@@ -80,8 +80,9 @@ export default {
 		},
 	},
 
-	mounted() {
+	mounted () {
 		this.parseInitialValue();
+
 		if (this.parentComponent) {
 			this.parentComponent.$watch('value', (value) => {
 				this.parentVal = value;
@@ -146,8 +147,10 @@ export default {
 								this.selectedOptions.push(option);
 							}
 						})
+
 						return;
 					}
+
 					if (this.value == option.value) {
 						this.selectedOptions.push(option);
 					}
@@ -161,7 +164,9 @@ export default {
 		* Dynamic search with the input value
 		*/
 		search: window._.debounce((loading, searchVal, vm) => {
-			let url = vm.buildParamString(searchVal)
+			loading(true);
+			let url = vm.buildParamString(searchVal);
+
 			window.Nova.request().get(url).then(({ data }) => {
 				vm.options = data;
 				vm.cacheOptions(data);
@@ -187,13 +192,13 @@ export default {
 			if (input.length < 3 && !/^\d+$/.test(input)) {
 				return;
 			}
-			loading(true);
 
 			this.search(loading, input, this);
 		},
 
 		reduceOption(option) {
 			const valueKey = this.field.valueKey || 'value';
+
 			return option ? option[valueKey] : null;
 		},
 
@@ -220,10 +225,12 @@ export default {
 
 		parseInitialValue() {
 			let value = this.field.value ? this.field.value : null;
+
 			if (!value) {
 				this.value = value;
 				return;
 			}
+
 			if (!this.field.multiple) {
 				value = this._parseValue(value);
 			} else {
@@ -232,6 +239,7 @@ export default {
 				}
 				!value[0] ? value = [] : value = value.map(this._parseValue);
 			}
+
 			this.value = value;
 		},
 
@@ -239,6 +247,7 @@ export default {
 			if (this.field.type === 'int') {
 				value = parseInt(value);
 			}
+
 			if (this.field.type === 'float') {
 				value = parseFloat(value);
 			}
@@ -246,22 +255,28 @@ export default {
 			return value;
 		},
 
-		inputSelected(value) {
+		inputSelected () {
+			const value = this.value;
+
 			if (!value) {
 				return;
 			}
+
 			if (Array.isArray(value)) {
 				value.forEach(v => {
 					if (!v) {
 						return;
 					}
+
 					const selectedOption = this.optionsCache.find(option => option.value === v);
+
 					if (selectedOption) {
 						this.selectedOptions.push(selectedOption);
 					}
 				});
 			} else {
 				const selectedOption = this.optionsCache.find(option => option.value === value);
+
 				if (selectedOption) {
 					this.selectedOptions.push(selectedOption);
 				}
