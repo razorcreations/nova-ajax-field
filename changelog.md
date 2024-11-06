@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 1.2.2 - 2024-11-06
 
-- Fix to vue-select 3.x returning an instance of the event, rather than the updated value
+- Fix to vue-select 3.x returning an instance of the event on change, rather than the updated value
 
 ## 1.2.1 - 2024-11-05
 
