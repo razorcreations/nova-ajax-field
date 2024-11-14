@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.3.0 - 2024-11-14
+
+- Fixed selected parent option not being passed correctly to the ajax endpoint
+- Added Custom stylesheet to help dark mode conflicts
+
 ## 1.2.3 - 2024-11-06
 
 - Updated dist bundle

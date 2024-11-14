@@ -1,1 +1,4 @@
 /* Nova Field CSS */
+.dark .vs--single .vs__selected {
+    color: #0f0!important;;
+}
