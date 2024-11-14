@@ -51,30 +51,6 @@ export default {
 	},
 
 	computed: {
-		parentComponent() {
-			if (!this.field.parent_field) {
-				return false;
-			}
-
-			let targetField = this.field.parent_field;
-			let currentField = this.field.attribute;
-
-			// If component is inside a flexible, key is prefixed with an id
-			if (currentField.indexOf('__')) {
-				targetField = currentField.substr(0, currentField.indexOf('__')) + '__' + targetField;
-			}
-
-			if (typeof this.$parent.$children === 'undefined') {
-				return;
-			}
-
-			//  Find the component the parent value references
-			return this.$parent.$children.find(component => {
-				return component.field !== undefined
-					&& component.field.attribute == targetField;
-			})
-		},
-
 		availableOptions() {
 			return _.uniqBy(this.options.concat(this.selectedOptions), 'value');
 		},
@@ -94,6 +70,45 @@ export default {
 	},
 
 	methods: {
+		findParentField() {
+			let parentFieldTarget = this.field.parent_field;
+			let currentField = this.field.attribute;
+
+			// If component is inside a flexible, key is prefixed with an id taken from currentField
+			if (currentField.indexOf('__') > -1) {
+				parentFieldTarget = currentField.substr(0, currentField.indexOf('__')) + '__' + parentFieldTarget;
+			}
+
+			// Make some attempts to find the parent field
+			const parentField = document.querySelector(`.form-input#${parentFieldTarget}`);
+
+			if (parentField) {
+				return parentField;
+			}
+
+			return null;
+		},
+
+		observeParentField() {
+			const targetInput = this.findParentField();
+			if (!targetInput) {
+				console.warn(`Input field with id ${this.field.parent_field} not found`);
+				return;
+			}
+
+			// Set initial value
+			this.parentVal = targetInput.value;
+
+			// Event listener to detect input changes
+			const updateParentValue = (event) => {
+				this.parentVal = event.target.value;
+				this.options = [];
+				this.loadInitialOptions();
+			};
+
+			targetInput.addEventListener('input', updateParentValue);
+		},
+
 		prepareField() {
 			//Check whether any filterable data was set, otherwise stay true
 			if (typeof this.field.filterable !== 'undefined') {
