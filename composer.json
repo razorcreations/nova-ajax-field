@@ -1,7 +1,7 @@
 {
 	"name": "razorcreations/ajax-field",
 	"description": "A searchable AJAX powered field for Laravel Nova 3 and 4.",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"authors": [
 		{
 			"name": "Ross Cooper",

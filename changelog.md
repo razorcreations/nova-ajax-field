@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.3.1 - 2024-11-14
+
+- Fixed the #0f0 green
+- Correctly fire the parent field observer
+
 ## 1.3.0 - 2024-11-14
 
 - Fixed selected parent option not being passed correctly to the ajax endpoint
