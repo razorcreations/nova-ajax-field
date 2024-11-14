@@ -58,12 +58,9 @@ export default {
 
 	mounted () {
 		this.parseInitialValue();
-
-		if (this.parentComponent) {
-			this.parentComponent.$watch('value', (value) => {
-				this.parentVal = value;
-				this.prepareField();
-			}, { immediate: true });
+		if (this.field.parent_field) {
+			this.observeParentField();
+			this.prepareField();
 		} else {
 			this.prepareField();
 		}
